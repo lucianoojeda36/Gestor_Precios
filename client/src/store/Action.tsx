@@ -8,7 +8,7 @@ export const GET_HOME = "GET_HOME"
 export const getProductByCodigo = (id: any) => {
   return function (dispatch: any) {
     axios
-      .get(`http://localhost:4000/api/productos/${id}`)
+      .get(`/api/productos/${id}`)
       .then((producto: any) => { console.log("productos",producto)
         dispatch({ type: GET_PRECIOS_CODIGO, payload: producto.data });
       })
@@ -17,15 +17,15 @@ export const getProductByCodigo = (id: any) => {
 };
 
 export const file_excel = (excell: any) => {
-  return function () {console.log(excell,"==============pepe========>")
-    axios.post(`http://localhost:4000/api/excell`,excell)
+  return function () {
+    axios.post(`/api/excell`,excell)
   };
 };
 
 export const home = () => {
   return function (dispatch: any) {
     axios
-      .get('http://localhost:4000/')
+      .get('/')
       .then((element: any) => {
         dispatch({ type: GET_HOME, payload:element.data});
       })
@@ -37,15 +37,13 @@ export const home = () => {
 export const getProducto = () => {
   return function (dispatch: any) {
     axios
-      .get('http://localhost:4000/api/productos')
+      .get('/api/productos')
       .then((producto: any) => {console.log(producto)
         dispatch({ type: GET_PRODUCTO, payload:producto});
       })
       .catch((err: string) => console.log(err));
   };
 };
-
-
 
 
 
